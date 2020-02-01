@@ -21,7 +21,8 @@ module.exports = {
       // https://core.telegram.org/bots/api#inlinequeryresult
       let now = new Date(2010, 6, 26).getTime();
 
-      console.log("I was tagged");
+      console.log("I was tagged" + now);
+
       telegram.answerInlineQuery(query.id, [
         {
           type: "article",
@@ -33,6 +34,27 @@ module.exports = {
         }
       ]);
     });
+
+
+    bot.onText(/\/echo (.+)/, (msg, match) => {
+      // 'msg' is the received Message from Telegram
+      // 'match' is the result of executing the regexp above on the text content
+      // of the message
+
+      const chatId = msg.chat.id;
+      const resp = match[1]; // the captured "whatever"
+      console.log("onText");
+      // send back the matched "whatever" to the chat
+      bot.sendMessage(chatId, resp);
+    });
+
+    bot.on('message', (msg) => {
+      const chatId = msg.chat.id;
+      console.log("on Message")
+      // send a message to the chat acknowledging receipt of their message
+      bot.sendMessage(chatId, 'Received your message');
+    });
+
 
   }
 };
