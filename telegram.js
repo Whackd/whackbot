@@ -12,7 +12,7 @@ module.exports = {
 
   init: function () {
 
-    telegram.onText(/bodycountbot(.+)/, (msg, match) => {
+    telegram.onText(null, (msg, match) => {
       const chatId = msg.chat.id;
       const resp = "Current supply of WHACKD"; // the captured "whatever"
       telegram.sendMessage(chatId, resp);
