@@ -17,7 +17,7 @@ module.exports = {
       // https://core.telegram.org/bots/api#inlinequeryresult
       let now = new Date(2010, 6, 26).getTime();
 
-      console.log("I was tagged" + now);
+      // console.log("I was tagged" + now);
 
       const api = "https://api.telegram.org/";
       const prefix = "bot";
@@ -32,7 +32,7 @@ module.exports = {
           callback(error, null);
         } else {
           console.log("responded");
-          console.log(resp);
+          // console.log(resp);
         }
       });
 
