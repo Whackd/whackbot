@@ -1,0 +1,10 @@
+.env
+.DS_Store
+node_modules
+.idea
+.sass-cache/*
+components/routes/_*
+.DS_Store
+.idea
+node_modules
+npm-debug.log

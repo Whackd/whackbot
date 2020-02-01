@@ -7,6 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const telegram = require('./telegram.js');
+telegram.init();
+
 var app = express();
 
 // view engine setup
