@@ -12,6 +12,7 @@ module.exports = {
   init:function(){
     console.log("Hola");
     telegram.on("text", function(message) {
+      console.log("I am here");
       telegram.sendMessage(message.chat.id, "Sup.");
     });
 
@@ -19,6 +20,8 @@ module.exports = {
 
       // https://core.telegram.org/bots/api#inlinequeryresult
       let now = new Date(2010, 6, 26).getTime();
+
+      console.log("I was tagged");
       telegram.answerInlineQuery(query.id, [
         {
           type: "article",
