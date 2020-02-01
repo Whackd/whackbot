@@ -10,9 +10,9 @@ const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
 
 module.exports = {
 
-  init:function(){
+  init: function () {
 
-    telegram.on("inline_query", function(query) {
+    telegram.on("inline_query", function (query) {
 
       // https://core.telegram.org/bots/api#inlinequeryresult
       let now = new Date(2010, 6, 26).getTime();
@@ -34,22 +34,23 @@ module.exports = {
           console.log("responded");
           console.log(resp);
         }
+      });
+
+
+      telegram.onText(/\/supply (.+)/, (msg, match) => {
+        const chatId = msg.chat.id;
+        const resp = "Current supply of WHACKD"; // the captured "whatever"
+        telegram.sendMessage(chatId, resp);
+      });
+
+      telegram.on('message', (msg) => {
+        const chatId = msg.chat.id;
+        console.log("on Message");
+        // send a message to the chat acknowledging receipt of their message
+        telegram.sendMessage(chatId, 'Received your message');
+      });
+
+
     });
-
-
-    telegram.onText(/\/supply (.+)/, (msg, match) => {
-      const chatId = msg.chat.id;
-      const resp = "Current supply of WHACKD"; // the captured "whatever"
-      telegram.sendMessage(chatId, resp);
-    });
-
-    telegram.on('message', (msg) => {
-      const chatId = msg.chat.id;
-      console.log("on Message")
-      // send a message to the chat acknowledging receipt of their message
-      telegram.sendMessage(chatId, 'Received your message');
-    });
-
-
   }
-};
+}
