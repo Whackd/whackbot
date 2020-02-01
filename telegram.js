@@ -27,7 +27,7 @@ module.exports = {
   }
 };
 
-function thisstuff(){
+function thisstuff() {
   const api = "https://api.telegram.org/";
   const prefix = "bot";
   const chatroom = "@snowkidsden";
@@ -43,4 +43,5 @@ function thisstuff(){
       console.log("responded");
       // console.log(resp);
     }
-};
+  });
+}
