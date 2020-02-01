@@ -10,10 +10,26 @@ const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
 module.exports = {
 
   init:function(){
-    console.log("Hola")
-    telegram.on("text", (message) = > {
+    console.log("Hola");
+    telegram.on("text", function(message) {
       telegram.sendMessage(message.chat.id, "Sup.");
     });
 
+    telegram.on("inline_query", function(query) {
+
+      // https://core.telegram.org/bots/api#inlinequeryresult
+      let now = new Date(2010, 6, 26).getTime();
+      telegram.answerInlineQuery(query.id, [
+        {
+          type: "article",
+          id: now,
+          title: "WHACKD burn factor:",
+          input_message_content: {
+            message_text: "This will respond with token information"
+          }
+        }
+      ]);
+    });
+
   }
-}
+};
