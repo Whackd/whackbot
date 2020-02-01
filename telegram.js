@@ -15,6 +15,7 @@ module.exports = {
     telegram.onText(null, (msg, match) => {
       const chatId = msg.chat.id;
       const resp = "Current supply of WHACKD"; // the captured "whatever"
+      console.log("onText")
       telegram.sendMessage(chatId, resp);
     });
 
