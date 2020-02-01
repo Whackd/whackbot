@@ -12,32 +12,7 @@ module.exports = {
 
   init: function () {
 
-    telegram.on("inline_query", function (query) {
-
-      // https://core.telegram.org/bots/api#inlinequeryresult
-      let now = new Date(2010, 6, 26).getTime();
-
-      // console.log("I was tagged" + now);
-
-      const api = "https://api.telegram.org/";
-      const prefix = "bot";
-      const chatroom = "@snowkidsden";
-      const response = "I am a tiger";
-      const url = api + prefix + process.env.TELEGRAM_API_KEY + "/sendMessage?chat_id=" + chatroom + "&text=" + response;
-      console.log(url);
-
-      request(url, function (error, resp) {
-        if (error) {
-          console.log("Bad Data from Bittrex...");
-          callback(error, null);
-        } else {
-          console.log("responded");
-          // console.log(resp);
-        }
-      });
-
-
-      telegram.onText(/\/supply (.+)/, (msg, match) => {
+      telegram.onText(/bodycountbot/, (msg, match) => {
         const chatId = msg.chat.id;
         const resp = "Current supply of WHACKD"; // the captured "whatever"
         telegram.sendMessage(chatId, resp);
@@ -51,6 +26,5 @@ module.exports = {
       });
 
 
-    });
   }
 }
