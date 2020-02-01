@@ -3,18 +3,14 @@ if (process.env.NODE_ENV !== 'production') {
   env(__dirname + '/.env');
 }
 
+const request = require('request');
+
 const TelegramBot = require('node-telegram-bot-api');
 const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
-
 
 module.exports = {
 
   init:function(){
-    console.log("Hola");
-    telegram.on("text", function(message) {
-      console.log("I am here");
-      telegram.sendMessage(message.chat.id, "Sup.");
-    });
 
     telegram.on("inline_query", function(query) {
 
@@ -23,28 +19,27 @@ module.exports = {
 
       console.log("I was tagged" + now);
 
-      telegram.answerInlineQuery(query.id, [
-        {
-          type: "article",
-          id: now,
-          title: "WHACKD burn factor:",
-          input_message_content: {
-            message_text: "This will respond with token information"
-          }
+      const api = "https://api.telegram.org/";
+      const prefix = "bot";
+      const chatroom = "@snowkidsden";
+      const response = "I am a tiger";
+      const url = api + prefix + process.env.TELEGRAM_API_KEY + "/sendMessage?chat_id=" + chatroom + "&text=" + response;
+      console.log(url);
+
+      request(url, function (error, resp) {
+        if (error) {
+          console.log("Bad Data from Bittrex...");
+          callback(error, null);
+        } else {
+          console.log("responded");
+          console.log(resp);
         }
-      ]);
     });
 
 
-    telegram.onText(/\/echo (.+)/, (msg, match) => {
-      // 'msg' is the received Message from Telegram
-      // 'match' is the result of executing the regexp above on the text content
-      // of the message
-
+    telegram.onText(/\/supply (.+)/, (msg, match) => {
       const chatId = msg.chat.id;
-      const resp = match[1]; // the captured "whatever"
-      console.log("onText");
-      // send back the matched "whatever" to the chat
+      const resp = "Current supply of WHACKD"; // the captured "whatever"
       telegram.sendMessage(chatId, resp);
     });
 
