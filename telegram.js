@@ -39,11 +39,11 @@ module.exports = {
   },
 
 // error [polling rror]
-  update:function(info){
-    bot.processUpdate(info);
-    console.log("telegram update");
-    console.log(info);
-  }
+//   update:function(info){
+//     bot.processUpdate(info);
+//     console.log("telegram update");
+//     console.log(info);
+//   }
 };
 
 function thisstuff() {

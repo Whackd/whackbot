@@ -25,10 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 
-app.post(`/bot${process.env.TELEGRAM_API_KEY}`, (req, res) => {
-  telegram.update(req.body);
-  res.sendStatus(200);
-});
+// app.post(`/bot${process.env.TELEGRAM_API_KEY}`, (req, res) => {
+//   telegram.update(req.body);
+//   res.sendStatus(200);
+// });
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
