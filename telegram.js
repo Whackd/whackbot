@@ -5,10 +5,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 const request = require('request');
 
-const TelegramBot = require('node-telegram-bot-api');
-const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
+  const TelegramBot = require('node-telegram-bot-api');
+  const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
 
-console.log(Object.keys(telegram));
+  console.log(Object.keys(telegram));
+
+
+
 
 module.exports = {
 

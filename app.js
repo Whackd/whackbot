@@ -8,8 +8,10 @@ const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const telegram = require('./telegram.js');
-telegram.init();
+if (!process.env.PAUSE) {
+  const telegram = require('./telegram.js');
+  telegram.init();
+}
 
 var app = express();
 
