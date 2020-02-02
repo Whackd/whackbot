@@ -26,7 +26,9 @@ module.exports = {
     telegram.on('channel_post', (msg) => {
 
       const chatId = msg.chat.id;
-      if (msg.text.includes("@bodycountbot")) {
+
+      let query = msg.text.toLowerCase();
+      if (query.includes("@whackdbot")) {
         const args = msg.text.split(" ");
         if (args.length > 1) {
           // handle commands
