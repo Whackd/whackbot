@@ -21,7 +21,7 @@ module.exports = {
       telegram.sendMessage(chatId, resp);
     });
 
-// works in PM's
+// works in PM's  ???channel_post
     telegram.on('message', (msg) => {
       const chatId = msg.chat.id;
       console.log("on Message");
