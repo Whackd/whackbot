@@ -14,7 +14,7 @@ module.exports = {
 
   init: function () {
 
-    telegram.onText(/\/suppy/, (msg, match) => {
+    telegram.onText(/^\/suppy/, (msg, match) => {
       const chatId = msg.chat.id;
       const resp = "Current supply of WHACKD"; // the captured "whatever"
       console.log("onText")
