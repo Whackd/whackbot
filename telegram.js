@@ -15,13 +15,10 @@ module.exports = {
 
   init: function () {
 
-// works in PM's  ???
-//     telegram.on('message', (msg) => {
-//       const chatId = msg.chat.id;
-//       console.log("on Message");
-//       // send a message to the chat acknowledging receipt of their message
-//       telegram.sendMessage(chatId, 'Received your message');
-//     });
+
+    telegram.on('message', (msg) => {
+      displayStats(msg.chat.id)
+    });
 
     telegram.on('channel_post', (msg) => {
 
