@@ -15,7 +15,6 @@ module.exports = {
 
   init: function () {
 
-
     telegram.on('message', (msg) => {
       displayStats(msg.chat.id)
     });
