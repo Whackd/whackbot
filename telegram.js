@@ -25,6 +25,11 @@ module.exports = {
       // send a message to the chat acknowledging receipt of their message
       telegram.sendMessage(chatId, 'Received your message');
     });
+  },
+
+  update:function(info){
+    bot.processUpdate(info);
+    console.log(info);
   }
 };
 
