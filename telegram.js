@@ -8,6 +8,8 @@ const request = require('request');
 const TelegramBot = require('node-telegram-bot-api');
 const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
 
+console.log(Object.keys(telegram));
+
 module.exports = {
 
   init: function () {
@@ -25,10 +27,21 @@ module.exports = {
       // send a message to the chat acknowledging receipt of their message
       telegram.sendMessage(chatId, 'Received your message');
     });
+
+    telegram.on("text", (message) => {
+
+       let response = "Some Text";
+       console.log(response);
+       telegram.sendMessage(message.chat.id, response);
+
+
+    });
+
   },
 
   update:function(info){
     bot.processUpdate(info);
+    console.log("telegram update");
     console.log(info);
   }
 };
