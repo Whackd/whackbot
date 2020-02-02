@@ -14,13 +14,14 @@ module.exports = {
 
   init: function () {
 
-    telegram.onText(null, (msg, match) => {
+    telegram.onText(/\/suppy/, (msg, match) => {
       const chatId = msg.chat.id;
       const resp = "Current supply of WHACKD"; // the captured "whatever"
       console.log("onText")
       telegram.sendMessage(chatId, resp);
     });
 
+// works in PM's
     telegram.on('message', (msg) => {
       const chatId = msg.chat.id;
       console.log("on Message");
@@ -28,17 +29,16 @@ module.exports = {
       telegram.sendMessage(chatId, 'Received your message');
     });
 
+    // works in PM's
     telegram.on("text", (message) => {
-
        let response = "Some Text";
        console.log(response);
        telegram.sendMessage(message.chat.id, response);
-
-
     });
 
   },
 
+// error [polling rror]
   update:function(info){
     bot.processUpdate(info);
     console.log("telegram update");
