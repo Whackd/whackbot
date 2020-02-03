@@ -99,8 +99,8 @@ function bitcoin(chatId){
       console.log("Bad Data" + error);
       // telegram.sendMessage(chatId, error);
     } else {
-    let btc = JSON.parse(resp);
-    console.log(btc);
+
+    console.log(resp);
     // console.log(resp['USD']);
       //telegram.sendMessage(chatId, acc);
     }
