@@ -15,10 +15,10 @@ module.exports = {
 
   init: function () {
 
-    telegram.on('message', (msg) => {
-      displayStats(msg.chat.id)
-      console.log("case1");
-    });
+    // telegram.on('message', (msg) => {
+    //   displayStats(msg.chat.id)
+    //   console.log("case1");
+    // });
 
     telegram.on('channel_post', (msg) => {
 
