@@ -103,13 +103,18 @@ function bitcoin(chatId){
       try {
         console.log("Telegram issues")
         let btc = resp.body;
+        console.log("1")
         const stupidApi = btc.split(":");
+        console.log("2")
         let acc = "Bitcoin: $";
+        console.log("3")
         acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
+        console.log("4")
         acc += " (cryptocompare)";
+        console.log("5")
         telegram.sendMessage(chatId, durrr);
       } catch (e) {
-        console.log("Api issues")
+
       }
     }
   });
