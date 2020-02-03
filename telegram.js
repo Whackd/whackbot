@@ -17,12 +17,13 @@ module.exports = {
 
     telegram.on('message', (msg) => {
       displayStats(msg.chat.id)
+      console.log("case1");
     });
 
     telegram.on('channel_post', (msg) => {
 
       const chatId = msg.chat.id;
-
+      console.log("case2");
       let query = msg.text.toLowerCase();
       if (query.includes("@whackdbot")) {
         const args = msg.text.split(" ");
