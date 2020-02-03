@@ -135,7 +135,7 @@ function pair(chatId, _from, _to) {
         acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
         acc += " (cryptocompare)";
         console.log(acc);
-        // telegram.sendMessage(chatId, acc);
+        telegram.sendMessage(chatId, acc);
       } catch (e) {
       }
     }
