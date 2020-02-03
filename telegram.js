@@ -29,7 +29,9 @@ module.exports = {
           else if (args[1] === 'btc') {
             bitcoin(chatId);
           }
-
+          else if (args.length === 3){
+            pair(chatId, args[1], args[2]);
+          }
           else {
             telegram.sendMessage(chatId, 'Command Not Recognized');
           }
@@ -113,6 +115,33 @@ function bitcoin(chatId){
     }
   });
 }
+
+function pair(chatId, _from, _to) {
+
+  const from = _from.toUpperCase();
+  const to = _to.toUpperCase();
+
+  let url = "https://min-api.cryptocompare.com/data/price?fsym=" + from + "&tsyms=" + to + "&api_key="; // + process.env.CRYPTOCOMPARE_API_KEY;
+
+  request(url, function (error, resp) {
+    if (error) {
+      console.log("Bad Data" + error);
+      telegram.sendMessage(chatId, error);
+    } else {
+      try {
+        let btc = resp.body;
+        const stupidApi = btc.split(":");
+        let acc = from + "/" + to + ":";
+        acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
+        acc += " (cryptocompare)";
+        console.log(acc);
+        // telegram.sendMessage(chatId, acc);
+      } catch (e) {
+      }
+    }
+  });
+}
+
 
 // function thisstuff() {
 //   const api = "https://api.telegram.org/";
