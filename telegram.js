@@ -93,6 +93,7 @@ function displayStats(chatId){
 }
 
 function bitcoin(chatId){
+  console.log("logic issues")
   let url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD&api_key=" + process.env.CRYPTOCOMPARE_API_KEY;
   request(url, function (error, resp) {
     if (error) {
@@ -100,13 +101,16 @@ function bitcoin(chatId){
       telegram.sendMessage(chatId, error);
     } else {
       try {
+        console.log("Telegram issues")
         let btc = resp.body;
         const stupidApi = btc.split(":");
         let acc = "Bitcoin: $";
         acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
         acc += " (cryptocompare)";
         telegram.sendMessage(chatId, durrr);
-      } catch (e) {}
+      } catch (e) {
+        console.log("Api issues")
+      }
     }
   });
 }
