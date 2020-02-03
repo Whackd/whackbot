@@ -96,8 +96,7 @@ function bitcoin(chatId){
   let url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD&api_key=" + process.env.CRYPTOCOMPARE_API_KEY;
   request(url, function (error, resp) {
     if (error) {
-      console.log("Bad Data");
-      callback(error, null);
+      console.log("Bad Data" + error);
       // telegram.sendMessage(chatId, error);
     } else {
     let btc = JSON.parse(resp);
