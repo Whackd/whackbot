@@ -97,15 +97,18 @@ function bitcoin(chatId){
   request(url, function (error, resp) {
     if (error) {
       console.log("Bad Data" + error);
-      // telegram.sendMessage(chatId, error);
+      telegram.sendMessage(chatId, error);
     } else {
-
-    console.log(JSON.parse(JSON.stringify(resp.body)));
-    // console.log(resp['USD']);
-      //telegram.sendMessage(chatId, acc);
+      try {
+        let btc = resp.body;
+        const stupidApi = btc.split(":");
+        let acc = "Bitcoin: $";
+        acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
+        acc += " (cryptocompare)";
+        telegram.sendMessage(chatId, durrr);
+      } catch (e) {}
     }
   });
-
 }
 
 // function thisstuff() {
