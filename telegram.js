@@ -43,8 +43,9 @@ module.exports = {
 
     telegram.on('channel_post', (msg) => {
 
-      // const chatId = msg.chat.id;
-      // console.log("case2");
+      const chatId = msg.chat.id;
+      console.log("case2");
+
       // let query = msg.text.toLowerCase();
       // if (query.includes("@whackdbot")) {
       //   const args = msg.text.split(" ");
@@ -62,6 +63,7 @@ module.exports = {
       //     displayStats(chatId); // it only does one thing atm
       //   }
       // }
+
     })
   }
 };
