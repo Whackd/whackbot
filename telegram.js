@@ -131,7 +131,7 @@ function pair(chatId, _from, _to) {
       try {
         let btc = resp.body;
         const stupidApi = btc.split(":");
-        let acc = from + "/" + to + ":";
+        let acc = from + "/" + to + ": ";
         acc += stupidApi[1].substring(0, stupidApi[1].length - 1);
         acc += " (cryptocompare)";
         console.log(acc);
