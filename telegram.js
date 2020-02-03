@@ -16,19 +16,21 @@ module.exports = {
   init: function () {
 
     telegram.on('message', (msg) => {
-      // displayStats(msg.chat.id)
-      console.log(msg);
+
       const chatId = msg.chat.id;
-      console.log("case2");
       let query = msg.text.toLowerCase();
       if (query.includes("@whackdbot")) {
         const args = msg.text.split(" ");
         if (args.length > 1) {
           // handle commands
-          console.log("commands");
           if (args[1] === 'supply') {
             displayStats(chatId);
-          } else {
+          }
+          else if (args[1] === 'btc') {
+            bitcoin(chatId);
+          }
+
+          else {
             telegram.sendMessage(chatId, 'Command Not Recognized');
           }
         } else {
@@ -86,6 +88,22 @@ function displayStats(chatId){
       telegram.sendMessage(chatId, acc);
     }
   });
+}
+
+function bitcoin(chatId){
+  let url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD&api_key=" + process.env.CRYPTOCOMPARE_API_KEY;
+  request(url, function (error, resp) {
+    if (error) {
+      console.log("Bad Data");
+      callback(error, null);
+      // telegram.sendMessage(chatId, error);
+    } else {
+    console.log(resp);
+    console.log(resp['USD']);
+      //telegram.sendMessage(chatId, acc);
+    }
+  });
+
 }
 
 // function thisstuff() {
