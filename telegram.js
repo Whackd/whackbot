@@ -18,10 +18,6 @@ module.exports = {
     telegram.on('message', (msg) => {
       // displayStats(msg.chat.id)
       console.log(msg);
-    });
-
-    telegram.on('channel_post', (msg) => {
-
       const chatId = msg.chat.id;
       console.log("case2");
       let query = msg.text.toLowerCase();
@@ -30,10 +26,9 @@ module.exports = {
         if (args.length > 1) {
           // handle commands
           console.log("commands");
-          if (args[1] === 'supply'){
+          if (args[1] === 'supply') {
             displayStats(chatId);
-          }
-          else {
+          } else {
             telegram.sendMessage(chatId, 'Command Not Recognized');
           }
         } else {
@@ -41,6 +36,30 @@ module.exports = {
           displayStats(chatId); // it only does one thing atm
         }
       }
+
+    });
+
+    telegram.on('channel_post', (msg) => {
+
+      // const chatId = msg.chat.id;
+      // console.log("case2");
+      // let query = msg.text.toLowerCase();
+      // if (query.includes("@whackdbot")) {
+      //   const args = msg.text.split(" ");
+      //   if (args.length > 1) {
+      //     // handle commands
+      //     console.log("commands");
+      //     if (args[1] === 'supply'){
+      //       displayStats(chatId);
+      //     }
+      //     else {
+      //       telegram.sendMessage(chatId, 'Command Not Recognized');
+      //     }
+      //   } else {
+      //     // display help
+      //     displayStats(chatId); // it only does one thing atm
+      //   }
+      // }
     })
   }
 };
