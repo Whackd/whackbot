@@ -88,7 +88,7 @@ function displayStats(chatId){
       acc += "Supply: " + sR + "\n";
       acc += "Remaining: " + pR + "%\n";
       acc += "Hodlers: " + data.holdersCount + "\n";
-      acc += "Approx next victim: " + nextVictim + "\n";
+      acc += "Approx next victim: " + "(I dont work right now because of a bug)" + "\n";
       telegram.sendMessage(chatId, acc);
     }
   });
