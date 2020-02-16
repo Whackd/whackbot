@@ -9,7 +9,8 @@ const telegram = new TelegramBot(process.env.TELEGRAM_API_KEY, {polling: true});
 const decimals = require('./lib/parseDecimal.js');
 const mathjs = require('mathjs');
 const Web3 = require('web3');
-const web3 = new Web3();
+const host = "https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY;
+const web3 = new Web3(new Web3.providers.HttpProvider(host));
 
 let reqs = [];
 let count = 0;
