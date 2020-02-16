@@ -11,6 +11,7 @@ const mathjs = require('mathjs');
 const Web3 = require('web3');
 const host = "https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY;
 const web3 = new Web3(new Web3.providers.HttpProvider(host));
+const whackd = "0xCF8335727B776d190f9D15a54E6B9B9348439eEE";
 
 let reqs = [];
 let count = 0;
