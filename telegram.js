@@ -137,8 +137,8 @@ function time(chatId) {
   if (reqs.length > 0) {
     getEvents(reqs[reqs.length - 1].from, reqs[reqs.length - 1].to, reqs[reqs.length - 1].url, function (error, found) {
       if (error){
-        console.log("An error has occured. " + error)
-
+        const acc = "An error has occured. " + error;
+        telegram.sendMessage(chatId, acc);
       } else {
         reqs.pop();
         if (found === 1) {
