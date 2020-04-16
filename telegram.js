@@ -106,7 +106,7 @@ async function displayStats(chatId){
     url += '&apikey=' + process.env.ETHERSCAN_API_KEY;
     // last known 9107357
     // last known 9522736
-    if (calls[i][0] > 9522730) { // filter out airderps
+    if (calls[i][0] > 9521000) { // filter out airderps
       reqs.push({from: calls[i][0], to: calls[i][1], url: url});
     }
   }
