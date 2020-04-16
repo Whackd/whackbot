@@ -104,7 +104,9 @@ async function displayStats(chatId){
     url += '&toBlock=' + calls[i][1];
     url += '&topic0=0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
     url += '&apikey=' + process.env.ETHERSCAN_API_KEY;
-    if (calls[i][0] > 9107357) { // filter out airderps
+    // last known 9107357
+    // last known 9522736
+    if (calls[i][0] > 9522730) { // filter out airderps
       reqs.push({from: calls[i][0], to: calls[i][1], url: url});
     }
   }
